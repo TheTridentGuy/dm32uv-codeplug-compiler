@@ -81,7 +81,13 @@
                                 "downlink": {
                                     "type": "number"
                                 },
-                                "contacts": {
+                                "ts1_contacts": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "ts2_contacts": {
                                     "type": "array",
                                     "items": {
                                         "type": "string"
@@ -91,8 +97,15 @@
                             "required": [
                                 "type",
                                 "uplink",
-                                "downlink",
-                                "contacts"
+                                "downlink"
+                            ],
+                            "anyOf": [
+                                {
+                                    "required": ["ts1_contacts"]
+                                },
+                                {
+                                    "required": ["ts2_contacts"]
+                                }
                             ]
                         }
                     }

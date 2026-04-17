@@ -25,7 +25,7 @@
                     "type": "digital",
                     "uplink": 555.555,
                     "downlink": 555.555,
-                    "contacts": [
+                    "ts2_contacts": [
                         "Worldwide",
                         "NorCal"
                     ]
@@ -39,7 +39,7 @@
                     "type": "digital",
                     "uplink": 555.555,
                     "downlink": 555.555,
-                    "contacts": [
+                    "ts1_contacts": [
                         "Lowell"
                     ]
                 }

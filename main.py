@@ -15,30 +15,37 @@ with open(file_path, "r") as f:
     codeplug_json = json.load(f)
 
 
-def index_contacts(contacts):
-    return {contact["name"]: contact["id"] for contact in contacts}
-
-
-def index_dmr_ids(dmr_ids):
-    return {dmr_id["name"]: dmr_id["id"] for dmr_id in dmr_ids}
-
-
 def load_digital_channel(digital_channel):
     ts1_contacts = digital_channel.get("ts1_contacts", [])
     ts2_contacts = digital_channel.get("ts2_contacts", [])
+    channel_names = []
     for ts, contacts in ((1, ts1_contacts), (2, ts2_contacts)):
         for contact in contacts:
-            yield contact
+            channel_name = digital_channel["name"] + "-" + contact
+            channel_names.append(channel_name)
             channels_rows.append(
-                [contact, "Digital", digital_channel["uplink"], digital_channel["downlink"], "High", "12.5KHz", "None", "Allow TX",
+                [channel_name, "Digital", digital_channel["uplink"], digital_channel["downlink"], "High", "12.5KHz",
+                 "None", "Allow TX",
                  "None", 3, "Off", 0, 0, 0, 0, 0, 0, 0, 0, 0, contact, "None", 0, "Slot 1" if ts == 1 else "Slot 2", 0,
-                 "None", 1, 0, 0, 0, digital_channel.get("dmr_id", default_dmr_id), digital_channel.get("uplink_cs", "None"),
+                 "None", 1, 0, 0, 0, digital_channel.get("dmr_id", default_dmr_id),
+                 digital_channel.get("uplink_cs", "None"),
                  digital_channel.get("downlink_cs", "None"), "None", "None", "Carrier/CTC", "None", "OFF", "0", "0"])
+    return channel_names
 
 
-group_contacts_index = index_contacts(codeplug_json["group_contacts"])
-private_contacts_index = index_contacts(codeplug_json["private_contacts"])
-dmr_ids_index = index_dmr_ids(codeplug_json["dmr_ids"])
+def load_analog_channel(analog_channel):
+    channel_name = analog_channel["name"]
+    channels_rows.append(
+        [channel_name, "Analog", analog_channel["uplink"], analog_channel["downlink"], "High", "12.5KHz",
+         "None", "Allow TX", "None", 3, "Off", 0, 0, 0, 0, 0, 0, 0, 0, 0, "None", "None", 0, "None", 0, "None", 1, 0, 0,
+         0, "None", analog_channel.get("uplink_cs", "None"), analog_channel.get("downlink_cs", "None"), "None",
+         "Carrier/CTC", "None", "OFF", 0, 0])
+    return channel_name
+
+
+contacts_rows.extend([[contact["name"], contact["id"], "Group Call"] for contact in codeplug_json.get("group_contacts", [])])
+contacts_rows.extend([[contact["name"], contact["id"], "Private Call"] for contact in codeplug_json.get("private_contacts", [])])
+dmr_ids_rows.extend([[dmr_id["name"], dmr_id["id"]] for dmr_id in codeplug_json["dmr_ids"]])
 default_dmr_id = codeplug_json["default_dmr_id"]
 zones = codeplug_json["channels"]
 for zone in zones:
@@ -47,3 +54,7 @@ for zone in zones:
     for channel in zone["channels"]:
         if channel["type"] == "Digital":
             zone_channel_names.extend(load_digital_channel(channel))
+        else:
+            assert channel["type"] == "Analog"
+            zone_channel_names.extend(load_analog_channel(channel))
+    zones_rows.append([name, "|".join(zone_channel_names)])

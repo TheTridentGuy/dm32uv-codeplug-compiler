@@ -22,6 +22,7 @@
       "name": "Mount Sutro",
       "channels": [
         {
+          "name": "W6PW",
           "type": "digital",
           "uplink": 555.555,
           "downlink": 555.555,
@@ -34,9 +35,10 @@
       ]
     },
     {
-      "name": "Lowell",
+      "": "Lowell",
       "channels": [
         {
+          "name": "LWL",
           "type": "digital",
           "uplink": 555.555,
           "downlink": 555.555,

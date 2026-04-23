@@ -1,49 +1,51 @@
 {
-    "group_contacts": [
+  "group_contacts": [
+    {
+      "name": "Lowell",
+      "id": 5
+    }
+  ],
+  "private_contacts": [],
+  "dmr_ids": [
+    {
+      "name": "KO6ENZ",
+      "id": 5
+    },
+    {
+      "name": "Lowell",
+      "id": 5
+    }
+  ],
+  "default_dmr_id": "KO6ENZ",
+  "zones": [
+    {
+      "name": "Mount Sutro",
+      "channels": [
         {
-            "name": "Lowell",
-            "id": 5
+          "type": "digital",
+          "uplink": 555.555,
+          "downlink": 555.555,
+          "uplink_cs": 1.0,
+          "ts2_contacts": [
+            "Worldwide",
+            "NorCal"
+          ]
         }
-    ],
-    "private_contacts": [],
-    "dmr_ids": [
+      ]
+    },
+    {
+      "name": "Lowell",
+      "channels": [
         {
-            "name": "KO6ENZ",
-            "id": 5
-        },
-        {
-            "name": "Lowell",
-            "id": 5
+          "type": "digital",
+          "uplink": 555.555,
+          "downlink": 555.555,
+          "dmr_id": "Lowell",
+          "ts1_contacts": [
+            "Lowell"
+          ]
         }
-    ],
-    "default_dmr_id": "KO6ENZ",
-    "zones": [
-        {
-            "name": "Mount Sutro",
-            "channels": [
-                {
-                    "type": "digital",
-                    "uplink": 555.555,
-                    "downlink": 555.555,
-                    "ts2_contacts": [
-                        "Worldwide",
-                        "NorCal"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Lowell",
-            "channels": [
-                {
-                    "type": "digital",
-                    "uplink": 555.555,
-                    "downlink": 555.555,
-                    "ts1_contacts": [
-                        "Lowell"
-                    ]
-                }
-            ]
-        }
-    ]
+      ]
+    }
+  ]
 }

@@ -2,3 +2,9 @@
 .venv/
 output/
 codeplug.json
+channels.csv
+contacts.csv
+dmr_ids.csv
+zones.csv
+build/
+dist/

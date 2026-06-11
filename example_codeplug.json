@@ -1,0 +1,95 @@
+{
+    "group_contacts": [
+        {
+            "name": "6001",
+            "id": 6001
+        },
+        {
+            "name": "Local",
+            "id": 9
+        },
+        {
+            "name": "NorCal",
+            "id": 31068
+        }
+    ],
+    "private_contacts": [],
+    "dmr_ids": [
+        {
+            "name": "KO6ENZ",
+            "id": 3221519
+        },
+        {
+            "name": "Lowell",
+            "id": 1
+        }
+    ],
+    "default_dmr_id": "KO6ENZ",
+    "zones": [
+        {
+            "name": "Mount Sutro",
+            "channels": [
+                {
+                    "name": "W6PW",
+                    "type": "digital",
+                    "uplink": 444.225,
+                    "downlink": 449.225,
+                    "ts1_contacts": [
+                        "NorCal"
+                    ],
+                    "ts2_contacts": [
+                        "Local"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Lowell",
+            "channels": [
+                {
+                    "name": "LWL",
+                    "type": "digital",
+                    "uplink": 463.737,
+                    "downlink": 463.737,
+                    "dmr_id": "Lowell",
+                    "ts1_contacts": [
+                        "6001"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "SF Bay Analog",
+            "channels": [
+                {
+                    "name": "Mount Sutro",
+                    "type": "analog",
+                    "uplink": 145.150,
+                    "downlink": 144.550,
+                    "uplink_cs": "D664N"
+                },
+                {
+                    "name": "Twin Peaks",
+                    "type": "analog",
+                    "uplink": 442.050,
+                    "downlink": 447.050,
+                    "uplink_cs": 127.3
+                },
+                {
+                    "name": "Downtown SF",
+                    "type": "analog",
+                    "uplink": 443.100,
+                    "downlink": 448.100,
+                    "uplink_cs": "D114N"
+                },
+                {
+                    "name": "Mount Diablo",
+                    "type": "analog",
+                    "uplink": 147.060,
+                    "downlink": 147.660,
+                    "uplink_cs": 100.0
+                }
+            ]
+        }
+    ]
+}

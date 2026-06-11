@@ -2,6 +2,8 @@
 
 Baofeng's CPS software UX is pretty bad, so I made this tool to compile a simple JSON format into CSV files that can easily be imported into the software.
 
+https://github.com/user-attachments/assets/d830122c-d048-4992-8b2a-572fb2b098af
+
 ## Usage:
 
 ### As a Python script:
